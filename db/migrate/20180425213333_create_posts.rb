@@ -5,7 +5,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
             t.datetime :updated_at
             t.string :image
             t.string :text
-            t.string :tags
+            t.string :tag_list
+            t.integer :user_id
         end
     end
 end

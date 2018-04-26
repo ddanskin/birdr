@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(version: 2018_04_25_213348) do
     t.datetime "updated_at"
     t.string "image"
     t.string "text"
-    t.string "tags"
+    t.string "tag_list"
+    t.integer "user_id"
   end
 
   create_table "tags", force: :cascade do |t|
