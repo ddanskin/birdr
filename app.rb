@@ -109,6 +109,7 @@ get "/user/profile/edit" do
     erb :edit_profile
 end
 
+# edit user profile
 put "/user/profile/edit" do
     profile_params = params[:profile]
     @profile = Profile.find_by(user_id: current_user.id)
