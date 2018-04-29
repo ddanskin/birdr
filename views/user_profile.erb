@@ -5,4 +5,18 @@
 <% else %>
     <a href="/user/profile/edit">Edit your profile!</a>
 <% end %>
-<div> See your posts</div>
+<div class="user_posts">
+    <% all_user_posts(current_user.id).each do |post| %>
+        <div class="post">
+            <% if post[:image] %>
+                <img src="<%= h post[:image] %>">
+            <% end %>
+            <% if post[:text] %>
+                <p><%= h post[:text] %></p>
+            <% end %>
+            <% if post[:tags] %>
+                <p>Tags: <%= h post[:tags] %></p>
+            <% end %>
+        </div>
+    <% end %>
+</div>

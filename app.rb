@@ -24,9 +24,17 @@ before '/user/profile/*' do
     end
 end
 
+# make sure user is signed in before showing user profiles
+before '/user/post/*' do
+    if current_user == nil
+        redirect "/user/signin"
+    end
+end
+
 # show default index
 get '/' do
     if logged_in?
+        @recent_posts = Post.all
         erb :home
     else
         erb :index
@@ -132,6 +140,7 @@ get "/user/post/:id/edit" do
     @post_default = Post.find_by(id: params[:id])
     erb :edit_post
 end
+
 # edit existing post
 post "/user/post/:id/edit" do
     post_params = params[:post]

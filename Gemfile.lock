@@ -13,10 +13,17 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
+    autoprefixer-rails (8.4.1)
+      execjs
     bcrypt (3.1.11)
     concurrent-ruby (1.0.5)
+    execjs (2.7.0)
+    ffi (1.9.23)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    materialize-sass (1.0.0.beta)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.5.2)
     minitest (5.11.3)
     mustermann (1.0.2)
     pg (1.0.0)
@@ -24,6 +31,14 @@ GEM
     rack-protection (2.0.1)
       rack
     rake (12.3.1)
+    rb-fsevent (0.10.3)
+    rb-inotify (0.9.10)
+      ffi (>= 0.5.0, < 2)
+    sass (3.5.6)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -42,6 +57,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt!
+  materialize-sass (~> 1.0.0.beta)!
   pg!
   rake!
   sinatra!
