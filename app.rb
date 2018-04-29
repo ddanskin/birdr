@@ -143,12 +143,24 @@ get "/user/post/:id/edit" do
 end
 
 # edit existing post
-post "/user/post/:id/edit" do
+put "/user/post/:id/edit" do
     post_params = params[:post]
     post = Post.find_by(id: params[:id])
     post.update(post_params)
     post.save!
     redirect "/"
+end
+
+# delete user post
+delete '/user/post/:id/delete' do
+    Post.destroy(params[:id])
+    redirect '/'
+end
+
+# show post by id number
+get "/user/post/:id" do
+    @post = Post.find(params[:id])
+    erb :post
 end
 
 # gets requested user profile and shows appropriate profile view

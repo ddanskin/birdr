@@ -3,15 +3,17 @@
         <% if @recent_posts %>
             <% @recent_posts.each do |post| %>
                 <div class="col s12 m4 post">
-                    <% if post[:image] %>
-                        <img class="responsive-img" src="<%= h post[:image] %>">
-                    <% end %>
-                    <% if post[:text] %>
-                        <p><%= h post[:text] %></p>
-                    <% end %>
-                    <% if post[:tags] %>
-                        <p>Tags: <%= h post[:tags] %></p>
-                    <% end %>
+                    <a href="/user/post/<%= post[:id] %>">
+                        <% if post[:image] %>
+                            <img class="responsive-img" src="<%= h post[:image] %>">
+                        <% end %>
+                        <% if post[:text] %>
+                            <p><%= h post[:text] %></p>
+                        <% end %>
+                        <% if post[:tags] %>
+                            <p>Tags: <%= h post[:tags] %></p>
+                        <% end %>
+                    </a>
                 </div>
             <% end %>
         <% end %>
