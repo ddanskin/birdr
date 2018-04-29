@@ -175,3 +175,12 @@ get "/signout" do
     session.clear
     redirect '/user/signin'
 end
+
+# delete user account
+delete '/user/:id' do
+    User.destroy(params[:id])
+    Profile.find_by(user_id: params[:id]).destroy
+    Post.where(user_id: params[:id]).destroy_all
+    session.clear
+    redirect '/'
+end
