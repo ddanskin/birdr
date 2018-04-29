@@ -160,6 +160,8 @@ get "/user/profile/:username" do
             erb :user_profile
         else
             @other_user = requested_profile
+            @other_profile = Profile.find_by(user_id: requested_profile.id)
+            @posts = all_user_posts(requested_profile.id)
             erb :other_profile
         end
     else
