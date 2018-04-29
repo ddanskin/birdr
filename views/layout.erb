@@ -1,7 +1,27 @@
-#TODO
-#header
-#logo
-#links
-#footer
-#copyright
-#links
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Birdr</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1><a href='/'>Birdr</a></h1>
+            <nav>
+                <ul>
+                    <% if logged_in? %>
+                        <li>Welcome, <%= current_user.username %></li>
+                        <li><a href="/user/profile/<%= current_user.username %>">Profile</a>
+                        <li><a href="/post">Create new Post!</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/signout">Logout</a></li>
+                    <% else %>
+                        <li><a href="/user/signup">Sign up!</a></li>
+                        <li><a href="/user/signin">Log in!</a></li>
+                    <% end %>
+                </ul>
+            </nav>
+        </div>
+        <div class="main_content"><%= yield %></div>
+        <div class="footer"><p>&copy; Birdr</p></div>
+    </body>
+</html>
