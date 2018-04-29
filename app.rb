@@ -3,6 +3,9 @@ require 'sinatra/activerecord'
 require 'bcrypt'
 
 require "./models/user"
+require "./models/profile"
+require "./models/post"
+
 require_relative "helpers"
 
 include BCrypt
@@ -39,15 +42,6 @@ get '/search' do
     end
 end
 
-# if logged in, show post page, otherwise show signin page
-get '/post' do
-    if logged_in?
-        erb :edit_post
-    else
-        erb :signin
-    end
-end
-
 # show sign up page
 get '/user/signup' do
     erb :signup
@@ -57,10 +51,10 @@ end
 post "/user/signup" do
     puts params[:user]
     user_params = params[:user]
-    @current_user = User.new(user_params)
-    @current_user.password = user_params[:password]
-    @current_user.save!
-    session[:user_id] = @current_user.id
+    current_user = User.new(user_params)
+    current_user.password = user_params[:password]
+    current_user.save!
+    session[:user_id] = current_user.id
     redirect "/user/profile/create"
 end
 
@@ -80,30 +74,71 @@ post "/user/signin" do
         redirect "/user/signin"
     end
 end
+
 # show form for editing current user's profile
 get "/user/profile/create" do
-    if logged_in?
-        erb :create_profile
-    else
-        erb :signin
-    end
+    @profile_default ={
+        city: "city",
+        state: "state",
+        country: "country",
+        about: "I'm new to birding."
+    }
+    erb :create_profile
 end
 
-post "user/profile/create" do
+# create user profile
+post "/user/profile/create" do
     profile_params = params[:profile]
     profile = Profile.create(profile_params)
-    profile.user_id = @current_user.id
+    profile.user_id = current_user.id
     profile.save!
     redirect "/user/post/create"
 end
 
 # show form for editing current user's profile
 get "/user/profile/edit" do
-    if logged_in?
-        erb :edit_profile
-    else
-        erb :signin
-    end
+    @profile = Profile.find_by(user_id: current_user.id)
+    erb :edit_profile
+end
+
+put "/user/profile/edit" do
+    profile_params = params[:profile]
+    @profile = Profile.find_by(user_id: current_user.id)
+    @profile.update(profile_params)
+    redirect '/'
+end
+
+# show form for creating first post
+get "/user/post/create" do
+    @post_default = {
+        image: "https://tinyurl.com/ycohj55h",
+        text: "My first post!",
+        tags: "firstpost,exoticbird,purple"
+    }
+    erb :create_post
+end
+
+# create new  post
+post "/user/post/create" do
+    post_params = params[:post]
+    new_post = Post.create(post_params)
+    new_post.user_id = current_user.id
+    new_post.save!
+    redirect "/"
+end
+
+# show form for editing post
+get "/user/post/:id/edit" do
+    @post_default = Post.find_by(id: params[:id])
+    erb :edit_post
+end
+# edit existing post
+post "/user/post/:id/edit" do
+    post_params = params[:post]
+    post = Post.find_by(id: params[:id])
+    post.update(post_params)
+    post.save!
+    redirect "/"
 end
 
 # gets requested user profile and shows appropriate profile view
@@ -113,7 +148,6 @@ get "/user/profile/:username" do
     puts requested_profile
     if requested_profile
         if current_user.username == params[:username]
-            current_user = requested_profile
             erb :user_profile
         else
             @other_user = requested_profile
