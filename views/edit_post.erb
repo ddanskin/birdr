@@ -1,6 +1,11 @@
-<form method="POST" action="/user/post/edit">
+<form method="POST" action="/user/post/<%= @post_default[:id] %>/edit">
+    <input type="hidden" name="_method" value="PUT">
     <input type='text' name="post[image]" value="<%= @post_default[:image] %>">
     <input type='text' name="post[text]" value="<%= @post_default[:text] %>">
     <input type='text' name="post[tags]" value="<%= @post_default[:tags] %>">
      <button type="submit">Submit Post</button>
+</form>
+<form method="POST" action="/user/post/<%= @post_default[:id] %>/delete">
+    <input type='hidden' name="_method" value="DELETE">
+     <button type="submit">Delete Post!</button>
 </form>

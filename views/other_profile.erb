@@ -1,22 +1,24 @@
 <div class="profile_info">
-    <h1><%= h @other_user[:username] %></h1>
-    <h1><%= h @other_profile[:city] %>, <%= h @other_profile[:state] %>, <%= h @other_profile[:country] %></h1>
-    <p><%= h @other_profile[:about] %></p>
+    <h3><%= h @other_user[:username] %></h3>
+    <h5><%= h @other_profile[:city] %>, <%= h @other_profile[:state] %>, <%= h @other_profile[:country] %></h5>
+    <h5><%= h @other_profile[:about] %></h5>
 </div>
 <div class="user_posts">
     <div class="row">
         <% @posts.each do |post| %>
-            <div class="col s12 m4 post">
-                <% if post[:image] %>
-                    <img class="responsive-img" src="<%= h post[:image] %>">
-                <% end %>
-                <% if post[:text] %>
-                    <p><%= h post[:text] %></p>
-                <% end %>
-                <% if post[:tags] %>
-                    <p>Tags: <%= h post[:tags] %></p>
-                <% end %>
-            </div>
+            <a href="/user/post/<%= post[:id] %>">
+                <div class="col s12 m4 post">
+                    <% if post[:image] %>
+                        <img class="responsive-img" src="<%= h post[:image] %>">
+                    <% end %>
+                    <% if post[:text] %>
+                        <p><%= h post[:text] %></p>
+                    <% end %>
+                    <% if post[:tags] %>
+                        <p>Tags: <%= h post[:tags] %></p>
+                    <% end %>
+                </div>
+            </a>
         <% end %>
     </div>
 </div>
