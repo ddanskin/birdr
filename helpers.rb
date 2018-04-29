@@ -20,7 +20,7 @@ helpers do
     end
 
     def all_user_posts(user_id)
-        Post.where(user_id: user_id)
+        Post.where(user_id: user_id).order("created_at DESC").limit(20)
     end
 
     def posted_by(user_id)
