@@ -1,8 +1,8 @@
-#TODO
-#profile pic
-#username
-#location
-#about blurb
-#profile age
-#create new 
-#post collection, showing newest to oldest
+<h1><%= h current_user.username %></h1>
+<% if profile %>
+    <h2><%= h profile.city %>, <%= h profile.state %>, <%=h profile.country %></h2>
+    <p><%= h profile.about %></p>
+<% else %>
+    <a href="/user/profile/edit">Edit your profile!</a>
+<% end %>
+<div> See your posts</div>
