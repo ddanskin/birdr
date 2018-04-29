@@ -2,6 +2,14 @@
 <html>
     <head>
         <title>Birdr</title>
+        <meta chaset="utf-8"
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="<%= url("/main.css") %>">
     </head>
     <body>
         <div class="header">
@@ -11,7 +19,7 @@
                     <% if logged_in? %>
                         <li>Welcome, <%= current_user.username %></li>
                         <li><a href="/user/profile/<%= current_user.username %>">Profile</a>
-                        <li><a href="/post">Create new Post!</a></li>
+                        <li><a href="/user/post/create">Create new Post!</a></li>
                         <li><a href="/search">Search</a></li>
                         <li><a href="/signout">Logout</a></li>
                     <% else %>
@@ -23,5 +31,6 @@
         </div>
         <div class="main_content"><%= yield %></div>
         <div class="footer"><p>&copy; Birdr</p></div>
+        <script src="/main.js"></script>
     </body>
 </html>

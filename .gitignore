@@ -1,2 +1,5 @@
 *.swp
 *.swo
+
+*.sass-cache*
+*.css.map 

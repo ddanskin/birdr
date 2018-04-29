@@ -1,2 +1,20 @@
-<h1><%= h @other_user.username %></h1>
-<div>See their posts</div>
+<div class="profile_info">
+    <h1><%= h @other_user[:username] %></h1>
+    <h1><%= h @other_profile[:city] %>, <%= h @other_profile[:state] %>, <%= h @other_profile[:country] %></h1>
+    <p><%= h @other_profile[:about] %></p>
+</div>
+<div class="user_posts">
+    <% all_user_posts(@other_user[:id]).each do |post| %>
+        <div class="post">
+            <% if post[:image] %>
+                <img src="<%= h post[:image] %>">
+            <% end %>
+            <% if post[:text] %>
+                <p><%= h post[:text] %></p>
+            <% end %>
+            <% if post[:tags] %>
+                <p>Tags: <%= h post[:tags] %></p>
+            <% end %>
+        </div>
+    <% end %>
+</div>
