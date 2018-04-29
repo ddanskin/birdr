@@ -12,10 +12,10 @@
         <link rel="stylesheet" href="<%= url("/main.css") %>">
     </head>
     <body>
-        <div class="header">
-            <h1><a href='/'>Birdr</a></h1>
-            <nav>
-                <ul>
+        <nav>
+            <div class="nav-wrapper grey darken-4">
+                <a href='/' class="brand-logo">Birdr</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <% if logged_in? %>
                         <li>Welcome, <%= current_user.username %></li>
                         <li><a href="/user/profile/<%= current_user.username %>">Profile</a>
@@ -27,9 +27,9 @@
                         <li><a href="/user/signin">Log in!</a></li>
                     <% end %>
                 </ul>
-            </nav>
-        </div>
-        <div class="main_content"><%= yield %></div>
+            </div>
+        </nav>
+        <div class="container"><%= yield %></div>
         <div class="footer"><p>&copy; Birdr</p></div>
         <script src="/main.js"></script>
     </body>
