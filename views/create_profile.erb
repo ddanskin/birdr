@@ -1,7 +1,7 @@
 <form method="POST" action="/user/profile/create">
-    <input type='text' name="profile[city]" placeholder="city">
-     <input type='text' name="profile[state]" placeholder="state">
-     <input type='text' name="profile[country]" placeholder="country">
-     <input type='text' name="profile[about]" placeholder="About you">
-     <button type="submit">Sign Up!</button>
+    <input type='text' name="profile[city]" value="<%= @profile_default[:city] %>">
+     <input type='text' name="profile[state]" value="<%= @profile_default[:state] %>">
+     <input type='text' name="profile[country]" value="<%= @profile_default[:country] %>">
+     <input type='text' name="profile[about]" value="<%= @profile_default[:about] %>">
+     <button type="submit">Create profile!</button>
 </form>
