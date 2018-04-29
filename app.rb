@@ -34,7 +34,7 @@ end
 # show default index
 get '/' do
     if logged_in?
-        @recent_posts = Post.all
+        @recent_posts = Post.all.order("created_at DESC").limit(20)
         erb :home
     else
         erb :index
@@ -166,7 +166,7 @@ end
 # gets requested user profile and shows appropriate profile view
 get "/user/profile/:username" do
     requested_profile = User.find_by(username: params[:username])
-    @all_posts = Post.where(user_id: requested_profile.id)
+    @all_posts = Post.where(user_id: requested_profile.id).order("created_at DESC").limit(20)
     puts requested_profile
     if requested_profile
         if current_user.username == params[:username]
@@ -174,7 +174,7 @@ get "/user/profile/:username" do
         else
             @other_user = requested_profile
             @other_profile = Profile.find_by(user_id: requested_profile.id)
-            @posts = all_user_posts(requested_profile.id)
+            @posts = all_user_posts(requested_profile.id).order("created_at DESC").limit(20)
             erb :other_profile
         end
     else
