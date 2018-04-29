@@ -4,17 +4,19 @@
     <p><%= h @other_profile[:about] %></p>
 </div>
 <div class="user_posts">
-    <% all_user_posts(@other_user[:id]).each do |post| %>
-        <div class="post">
-            <% if post[:image] %>
-                <img src="<%= h post[:image] %>">
-            <% end %>
-            <% if post[:text] %>
-                <p><%= h post[:text] %></p>
-            <% end %>
-            <% if post[:tags] %>
-                <p>Tags: <%= h post[:tags] %></p>
-            <% end %>
-        </div>
-    <% end %>
+    <div class="row">
+        <% @posts.each do |post| %>
+            <div class="col s12 m4 post">
+                <% if post[:image] %>
+                    <img class="responsive-img" src="<%= h post[:image] %>">
+                <% end %>
+                <% if post[:text] %>
+                    <p><%= h post[:text] %></p>
+                <% end %>
+                <% if post[:tags] %>
+                    <p>Tags: <%= h post[:tags] %></p>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
 </div>

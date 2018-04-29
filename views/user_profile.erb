@@ -1,22 +1,25 @@
-<h1><%= h current_user.username %></h1>
-<% if profile %>
-    <h2><%= h profile.city %>, <%= h profile.state %>, <%=h profile.country %></h2>
-    <p><%= h profile.about %></p>
-<% else %>
-    <a href="/user/profile/edit">Edit your profile!</a>
-<% end %>
-<div class="user_posts">
-    <% all_user_posts(current_user.id).each do |post| %>
-        <div class="post">
-            <% if post[:image] %>
-                <img src="<%= h post[:image] %>">
-            <% end %>
-            <% if post[:text] %>
-                <p><%= h post[:text] %></p>
-            <% end %>
-            <% if post[:tags] %>
-                <p>Tags: <%= h post[:tags] %></p>
-            <% end %>
-        </div>
+<div class="user_profile">
+    <h1><%= h current_user.username %></h1>
+    <% if profile %>
+        <h2><%= h profile.city %>, <%= h profile.state %>, <%=h profile.country %></h2>
+        <h4><%= h profile.about %></h4>
     <% end %>
+    <a href="/user/profile/edit">Edit your profile!</a>
+</div>
+<div class="user_posts">
+    <div class="row">
+        <% all_user_posts(current_user.id).each do |post| %>
+            <div class="col sm12 m4 post">
+                <% if post[:image] %>
+                    <img class="responsive-img" src="<%= h post[:image] %>">
+                <% end %>
+                <% if post[:text] %>
+                    <p><%= h post[:text] %></p>
+                <% end %>
+                <% if post[:tags] %>
+                    <p>Tags: <%= h post[:tags] %></p>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
 </div>
