@@ -1,42 +1,48 @@
 <div class="row">
     <form method="POST" action="/search">
         <div class="input-field col s12 m4">
-            <select>
+            <select id="search_type">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="username">username</option>
                 <option value="tag">tag</option>
             </select>
             <label>Search By</label>
+            <input type="hidden" name="result_type" id="result_type" />
         </div>
         <div class="input-field col s8">
-            <input id="search" type="text" required>
+            <input name="search" type="text" required>
         </div>
+        <input type="submit" style="visibility: hidden;" />
     </form>
 </div>
 <div class="results">
     <div class="row">
         <% if @results_type == "username" %>
-            <% @results.each do |result| %>
-                <a href="/user/profile/<%= result[:username] %>"><%= result[:username] %></a>
-            <% end %>
-        <% elsif @results_type == "tag" %>
             <div class="col s12 m4 post">
-                <a href="/user/post/<%= result[:id] %>">
-                    <% if result[:image] %>
-                        <img class="responsive-img" src="<%= h result[:image] %>">
-                    <% end %>
-                    <% if result[:text] %>
-                        <p><%= h result[:text] %></p>
-                    <% end %>
-                    <% if result[:tags] %>
-                        <div class="chip">Tags: <%= h result[:tags] %></div>
-                    <% end %>
-                    <p>Posted by:
-                        <a href="/user/profile/<%= h posted_by(result[:user_id]) %>">
-                        <%= h posted_by(result[:user_id]) %> </a>
-                    </p>
-                </a>
+                <% @results.each do |result| %>
+                    <a href="/user/profile/<%= result[:username] %>"><%= result[:username] %></a>
+                <% end %>
             </div>
+        <% elsif @results_type == "tag" %>
+            <% @results.each do |result| %>
+                <div class="col s12 m4 post">
+                    <a href="/user/post/<%= result[:id] %>">
+                        <% if result[:image] %>
+                            <img class="responsive-img" src="<%= h result[:image] %>">
+                        <% end %>
+                        <% if result[:text] %>
+                            <p><%= h result[:text] %></p>
+                        <% end %>
+                        <% if result[:tags] %>
+                            <div class="chip">Tags: <%= h result[:tags] %></div>
+                        <% end %>
+                        <p>Posted by:
+                            <a href="/user/profile/<%= h posted_by(result[:user_id]) %>">
+                            <%= h posted_by(result[:user_id]) %> </a>
+                        </p>
+                    </a>
+                </div>
+            <% end %>
         <% end %>
     </div>
 </div>

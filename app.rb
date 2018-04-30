@@ -41,6 +41,11 @@ get '/' do
     end
 end
 
+get '/faq' do
+
+    erb :faq
+end
+
 # if logged in, show search page, otherwise show signin page
 get '/search' do
     if logged_in?
@@ -53,6 +58,15 @@ end
 # search for profiles/posts
 post '/search' do
     puts params
+    @results_type = params[:result_type]
+    search_term = params[:search]
+    if  @results_type == "username"
+        @results = User.where(username: search_term)
+    elsif @results_type == "tag"
+        @results = Post.where(tags: search_term).order("created_at DESC").limit(20)
+    end
+
+    redirect '/search'
 end
 
 # show sign up page
