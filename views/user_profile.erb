@@ -17,8 +17,8 @@
                     <% if post[:text] %>
                         <p><%= h post[:text] %></p>
                     <% end %>
-                    <% if post[:tags] %>
-                        <div class="chip">Tags: <%= h post[:tags] %></div>
+                    <% if post[:tag_list] %>
+                        <div class="chip">Tags: <%= h post[:tag_list] %></div>
                     <% end %>
                 </div>
             </a>

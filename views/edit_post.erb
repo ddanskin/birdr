@@ -2,7 +2,7 @@
     <input type="hidden" name="_method" value="PUT">
     <input type='text' name="post[image]" value="<%= @post_default[:image] %>">
     <input type='text' name="post[text]" value="<%= @post_default[:text] %>">
-    <input type='text' name="post[tags]" value="<%= @post_default[:tags] %>">
+    <input type='text' name="post[tag_list]" value="<%= @post_default[:tag_list] %>">
      <button type="submit">Submit Post</button>
 </form>
 <form method="POST" action="/user/post/<%= @post_default[:id] %>/delete">

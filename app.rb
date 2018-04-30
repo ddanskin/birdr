@@ -5,6 +5,8 @@ require 'bcrypt'
 require "./models/user"
 require "./models/profile"
 require "./models/post"
+require "./models/tag"
+require "./models/post_tag"
 
 require_relative "helpers"
 
@@ -69,7 +71,10 @@ get '/search/results/by/:result_type/:search' do
     if  @results_type == "username"
         @results = User.where(username: @search_term)
     elsif @results_type == "tag"
-        @results = Post.where(tags: @search_term).order("created_at DESC").limit(20)
+        id_of_tag = Tag.find_by(text: @search_term)
+        if id_of_tag
+            @results = Post_Tag.where(tag_id: id_of_tag[:id])
+        end
     end
     puts @results
     erb :results
@@ -147,7 +152,7 @@ get "/user/post/create" do
     @post_default = {
         image: "https://tinyurl.com/ycohj55h",
         text: "My first post!",
-        tags: "firstpost,exoticbird,purple"
+        tag_list: "firstpost,exoticbird,purple"
     }
     erb :create_post
 end
@@ -158,6 +163,7 @@ post "/user/post/create" do
     new_post = Post.create(post_params)
     new_post.user_id = current_user.id
     new_post.save!
+    create_tags(new_post[:tag_list], new_post[:id])
     redirect "/"
 end
 
@@ -173,12 +179,15 @@ put "/user/post/:id/edit" do
     post = Post.find_by(id: params[:id])
     post.update(post_params)
     post.save!
+    Post_Tag.where(post_id: params[:id]).destroy_all
+    create_tags(post[:tag_list], post[:id])
     redirect "/"
 end
 
 # delete user post
 delete '/user/post/:id/delete' do
     Post.destroy(params[:id])
+    Post_Tag.where(post_id: params[:id]).destroy_all
     redirect '/'
 end
 
@@ -218,7 +227,9 @@ end
 delete '/user/:id' do
     User.destroy(params[:id])
     Profile.find_by(user_id: params[:id]).destroy
-    Post.where(user_id: params[:id]).destroy_all
+    all_posts = Post.where(user_id: params[:id])
+    delete_tags(all_posts)
+    all_posts.destroy_all
     session.clear
     redirect '/'
 end

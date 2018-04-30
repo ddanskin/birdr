@@ -1,7 +1,7 @@
 <div class="col s12 post">
     <img class="responsive-img" src="<%= h @post[:image] %>">
     <p><%= h @post[:text] %></p>
-    <div class="chip">Tags: <%= h @post[:tags] %></div>
+    <div class="chip">Tags: <%= h @post[:tag_list] %></div>
     <p>Posted by:
         <a href="/user/profile/<%= h posted_by(@post[:user_id]) %>">
         <%= h posted_by(@post[:user_id]) %> </a>
