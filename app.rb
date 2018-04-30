@@ -48,6 +48,11 @@ get '/faq' do
     erb :faq
 end
 
+# show about page
+get '/about' do
+    erb :about
+end
+
 # if logged in, show search page, otherwise show signin page
 get '/search' do
     if logged_in?
