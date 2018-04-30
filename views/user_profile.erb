@@ -1,0 +1,27 @@
+<div class="user_profile">
+    <h3><%= h current_user.username %></h3>
+    <% if profile %>
+        <h5><%= h profile.city %>, <%= h profile.state %>, <%=h profile.country %></h5>
+        <h5><%= h profile.about %></h5>
+    <% end %>
+    <a href="/user/profile/edit">Edit your profile!</a>
+</div>
+<div class="user_posts">
+    <div class="row">
+        <% all_user_posts(current_user.id).each do |post| %>
+            <a href="/user/post/<%= post[:id] %>">
+                <div class="col sm12 m4 post">
+                    <% if post[:image] %>
+                        <img class="responsive-img" src="<%= h post[:image] %>">
+                    <% end %>
+                    <% if post[:text] %>
+                        <p><%= h post[:text] %></p>
+                    <% end %>
+                    <% if post[:tag_list] %>
+                        <div class="chip">Tags: <%= h post[:tag_list] %></div>
+                    <% end %>
+                </div>
+            </a>
+        <% end %>
+    </div>
+</div>

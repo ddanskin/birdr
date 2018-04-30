@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    .header{
+        h1{
+
+        }
+        nav{
+            ul{
+                list-style-type: none;
+            }
+        }
+    }
+    .container {
+       .post{
+           img {
+           }
+       }
+    }
+    .footer{
+    }
+}
+main {
+    flex: 1 0 auto;
+}

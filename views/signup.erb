@@ -1,0 +1,13 @@
+<form method="POST" action="/user/signup">
+    <input type="text" name="user[first_name]" placeholder="first name">
+     <input type="text" name="user[last_name]" placeholder="last name">
+     <input type="text" name="user[username]" placeholder="username">
+     <input type="text" name="user[email]" placeholder="email" class="validate">
+     <input type="password" name="user[password]" placeholder="password" class="validate">
+     <label>
+         <input type="hidden" name="over_12" value="false">
+         <input type="checkbox" class="filled-in" name="over_12" value="true">
+         <span>I am 13 or older</span>
+     </label>
+     <button type="submit">Sign Up!</button>
+</form>

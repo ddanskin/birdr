@@ -1,0 +1,7 @@
+development:
+adapter: postgresql
+database: birdr
+
+production:
+adapter: postgresql
+host: <%= ENV['DATABASE_URL'] %> 

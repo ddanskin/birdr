@@ -1,0 +1,25 @@
+<div class="recent_posts">
+    <div class="row">
+        <% if @recent_posts %>
+            <% @recent_posts.each do |post| %>
+                <div class="col s12 m4 post">
+                    <a href="/user/post/<%= post[:id] %>">
+                        <% if post[:image] %>
+                            <img class="responsive-img" src="<%= h post[:image] %>">
+                        <% end %>
+                        <% if post[:text] %>
+                            <p><%= h post[:text] %></p>
+                        <% end %>
+                        <% if post[:tag_list] %>
+                            <div class="chip">Tags: <%= h post[:tag_list] %></div>
+                        <% end %>
+                        <p>Posted by:
+                            <a href="/user/profile/<%= h posted_by(post[:user_id]) %>">
+                            <%= h posted_by(post[:user_id]) %> </a>
+                        </p>
+                    </a>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
