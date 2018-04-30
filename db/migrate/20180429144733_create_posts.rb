@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
             t.integer :user_id
             t.string :image
             t.string :text
-            t.string :tags
+            t.string :tag_list
             t.datetime :created_at
             t.datetime :updated_at
         end
