@@ -41,8 +41,8 @@ get '/' do
     end
 end
 
+# show frequently asked questions page
 get '/faq' do
-
     erb :faq
 end
 
@@ -58,15 +58,21 @@ end
 # search for profiles/posts
 post '/search' do
     puts params
-    @results_type = params[:result_type]
-    search_term = params[:search]
-    if  @results_type == "username"
-        @results = User.where(username: search_term)
-    elsif @results_type == "tag"
-        @results = Post.where(tags: search_term).order("created_at DESC").limit(20)
-    end
+    results_type = params[:result_type]
+    search_value = params[:search]
+    redirect "/search/results/by/#{results_type}/#{search_value}"
+end
 
-    redirect '/search'
+get '/search/results/by/:result_type/:search' do
+    @results_type = params[:result_type]
+    @search_term = params[:search]
+    if  @results_type == "username"
+        @results = User.where(username: @search_term)
+    elsif @results_type == "tag"
+        @results = Post.where(tags: @search_term).order("created_at DESC").limit(20)
+    end
+    puts @results
+    erb :results
 end
 
 # show sign up page

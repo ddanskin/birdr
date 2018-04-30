@@ -1,0 +1,32 @@
+<div class="results">
+    <h3>Results for <%= @results_type %>: <% @search_term %></h3>
+    <div class="row">
+        <% if @results_type == "username" %>
+            <div class="col s12 m4 post">
+                <% @results.each do |result| %>
+                    <h4><a href="/user/profile/<%= result[:username] %>"><%= result[:username] %></a></h4>
+                <% end %>
+            </div>
+        <% elsif @results_type == "tag" %>
+            <% @results.each do |result| %>
+                <div class="col s12 m4 post">
+                    <a href="/user/post/<%= result[:id] %>">
+                        <% if result[:image] %>
+                            <img class="responsive-img" src="<%= h result[:image] %>">
+                        <% end %>
+                        <% if result[:text] %>
+                            <p><%= h result[:text] %></p>
+                        <% end %>
+                        <% if result[:tags] %>
+                            <div class="chip">Tags: <%= h result[:tags] %></div>
+                        <% end %>
+                        <p>Posted by:
+                            <a href="/user/profile/<%= h posted_by(result[:user_id]) %>">
+                            <%= h posted_by(result[:user_id]) %> </a>
+                        </p>
+                    </a>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>
