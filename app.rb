@@ -52,7 +52,7 @@ end
 
 # search for profiles/posts
 post '/search' do
-    
+    puts params
 end
 
 # show sign up page
