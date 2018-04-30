@@ -16,7 +16,7 @@ include BCrypt
 
 configure do
     enable :sessions
-    set :session_secret, ENV['SESSION_SECRET']
+    set :session_secret, "skefhksrfknerifwiorou23495u2ojnrfv67et1782" #ENV['SESSION_SECRET']
 end
 
 # make sure user is signed in before showing user profiles
