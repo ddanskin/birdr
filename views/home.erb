@@ -11,8 +11,12 @@
                             <p><%= h post[:text] %></p>
                         <% end %>
                         <% if post[:tags] %>
-                            <p>Tags: <%= h post[:tags] %></p>
+                            <div class="chip">Tags: <%= h post[:tags] %></div>
                         <% end %>
+                        <p>Posted by:
+                            <a href="/user/profile/<%= h posted_by(post[:user_id]) %>">
+                            <%= h posted_by(post[:user_id]) %> </a>
+                        </p>
                     </a>
                 </div>
             <% end %>
