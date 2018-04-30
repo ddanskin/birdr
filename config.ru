@@ -1,3 +1,6 @@
+require 'sinatra'
+require 'sinatra/activerecord'
+require 'bcrypt'
 require "./models/user"
 require "./models/profile"
 require "./models/post"
