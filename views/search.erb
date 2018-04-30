@@ -1,11 +1,42 @@
-<nav>
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
+<div class="row">
+    <form method="POST" action="/search">
+        <div class="input-field col s12 m4">
+            <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="username">username</option>
+                <option value="tag">tag</option>
+            </select>
+            <label>Search By</label>
         </div>
-      </form>
+        <div class="input-field col s8">
+            <input id="search" type="text" required>
+        </div>
+    </form>
+</div>
+<div class="results">
+    <div class="row">
+        <% if @results_type == "username" %>
+            <% @results.each do |result| %>
+                <a href="/user/profile/<%= result[:username] %>"><%= result[:username] %></a>
+            <% end %>
+        <% elsif @results_type == "tag" %>
+            <div class="col s12 m4 post">
+                <a href="/user/post/<%= result[:id] %>">
+                    <% if result[:image] %>
+                        <img class="responsive-img" src="<%= h result[:image] %>">
+                    <% end %>
+                    <% if result[:text] %>
+                        <p><%= h result[:text] %></p>
+                    <% end %>
+                    <% if result[:tags] %>
+                        <div class="chip">Tags: <%= h result[:tags] %></div>
+                    <% end %>
+                    <p>Posted by:
+                        <a href="/user/profile/<%= h posted_by(result[:user_id]) %>">
+                        <%= h posted_by(result[:user_id]) %> </a>
+                    </p>
+                </a>
+            </div>
+        <% end %>
     </div>
-</nav>
+</div>

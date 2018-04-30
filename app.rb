@@ -50,6 +50,11 @@ get '/search' do
     end
 end
 
+# search for profiles/posts
+post '/search' do
+    
+end
+
 # show sign up page
 get '/user/signup' do
     erb :signup
