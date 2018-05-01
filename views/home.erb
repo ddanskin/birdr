@@ -2,7 +2,7 @@
     <div class="row">
         <% if @recent_posts %>
             <% @recent_posts.each do |post| %>
-                <div class="col s12 m4 post">
+                <div class="col s12 l4 post">
                     <a href="/user/post/<%= post[:id] %>">
                         <% if post[:image] %>
                             <img class="responsive-img" src="<%= h post[:image] %>">

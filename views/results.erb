@@ -2,7 +2,7 @@
     <h3>Results for <%= @results_type %>: <% @search_term %></h3>
     <div class="row">
         <% if @results_type == "username" %>
-            <div class="col s12 m4 post">
+            <div class="col s12 l4 post">
                 <% @results.each do |result| %>
                     <h4><a href="/user/profile/<%= result[:username] %>"><%= result[:username] %></a></h4>
                 <% end %>
@@ -10,7 +10,7 @@
         <% elsif @results_type == "tag" %>
             <% @results.each do |result| %>
                 <% current_post = post_by_id(result[:post_id]) %>
-                <div class="col s12 m4 post">
+                <div class="col s12 l4 post">
                     <a href="/user/post/<%= current_post[:id] %>">
                         <% if current_post[:image] %>
                             <img class="responsive-img" src="<%= h current_post[:image] %>">
