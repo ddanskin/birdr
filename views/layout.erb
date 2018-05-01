@@ -16,7 +16,7 @@
         <nav>
             <div class="nav-wrapper grey darken-4">
                 <a href='/' class="brand-logo">Birdr</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <ul id="nav-mobile" class="right button-collapse">
                     <% if logged_in? %>
                         <li>Welcome, <%= current_user.username %></li>
                         <li><a href="/user/profile/<%= current_user.username %>">Profile</a>
