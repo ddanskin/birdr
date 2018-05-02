@@ -24,7 +24,7 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <% if logged_in? %>
                         <li>Welcome, <%= current_user.username %></li>
-                        <li><a href="/user/profile/<%= current_user.username %>">Profile</a>
+                        <li><a href="/user/profile/<%= current_user.username %>">Profile</a></li>
                         <li><a href="/user/post/create">Create new Post!</a></li>
                         <li><a href="/search">Search</a></li>
                         <li><a href="/signout">Logout</a></li>
