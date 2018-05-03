@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sidenav();
     $('.collapsible').collapsible();
     $('select').formSelect();
     $('#search_type').on('change', function() {
