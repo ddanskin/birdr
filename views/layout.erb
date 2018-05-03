@@ -32,7 +32,7 @@
                         <li><a href="/user/signin">Log in!</a></li>
                     <% end %>
                 </ul>
-                <ul id="mobile-demo" class="right sidenav">
+                <ul id="mobile-demo" class="right side-nav">
                     <% if logged_in? %>
                         <li>Welcome, <%= current_user.username %></li>
                         <li><a href="/user/profile/<%= current_user.username %>">Profile</a></li>
