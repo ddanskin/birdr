@@ -20,6 +20,7 @@
         <nav class="nav">
             <div class="nav-wrapper grey darken-4">
                 <a href='/' class="brand-logo left">Birdr</a>
+                <a href="#" data-activates="mobile-demo" class="sidenav-trigger right hide-on-large-only"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <% if logged_in? %>
                         <li>Welcome, <%= current_user.username %></li>
@@ -32,21 +33,20 @@
                         <li><a href="/user/signin">Log in!</a></li>
                     <% end %>
                 </ul>
-                <ul id="mobile-demo" class="right sidenav">
-                    <% if logged_in? %>
-                        <li>Welcome, <%= current_user.username %></li>
-                        <li><a href="/user/profile/<%= current_user.username %>">Profile</a></li>
-                        <li><a href="/user/post/create">Create new Post!</a></li>
-                        <li><a href="/search">Search</a></li>
-                        <li><a href="/signout">Logout</a></li>
-                    <% else %>
-                        <li><a href="/user/signup">Sign up!</a></li>
-                        <li><a href="/user/signin">Log in!</a></li>
-                    <% end %>
-                </ul>
-                <a href="#" data-activates="mobile-demo" class="sidenav-trigger right hide-on-large-only"><i class="material-icons">menu</i></a>
             </div>
         </nav>
+        <ul id="mobile-demo" class="right sidenav">
+            <% if logged_in? %>
+                <li>Welcome, <%= current_user.username %></li>
+                <li><a href="/user/profile/<%= current_user.username %>">Profile</a></li>
+                <li><a href="/user/post/create">Create new Post!</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="/signout">Logout</a></li>
+            <% else %>
+                <li><a href="/user/signup">Sign up!</a></li>
+                <li><a href="/user/signin">Log in!</a></li>
+            <% end %>
+        </ul>
         <div class="container"><%= yield %></div>
         <footer class="page-footer grey">
           <div class="container">
