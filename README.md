@@ -1,7 +1,7 @@
 # rumbler
 
 # Project Title
-Birdr
+[Birdr](http://birdr-blog.herokuapp.com/)
 
 # Motivation
 Birdr is a fullstack microblogging application similar to Tumblr. Users are able to create posts to share photos that are hosted on other websites, write blog posts, and tag their posts to enable searching posts by topic.
@@ -9,12 +9,12 @@ Birdr is a fullstack microblogging application similar to Tumblr. Users are able
 # Built with
 * Sinatra
 * ActiveRecord
-* Postgresql
+* Postgresql database
 * SASS framework
 * Materialize library
 * jQuery library
-* BCrypt
-* Heroku
+* BCrypt password encryption
+* deployed to Heroku
 
 # Features
 * User can create/delete account and login using a username and password(password is hashed using BCrypt.
