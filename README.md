@@ -23,5 +23,10 @@ Birdr is a fullstack microblogging application similar to Tumblr. Users are able
 * User can view posts created by other users.
 * User can search for other users or posts by either username or tag.
 
+# To Use
+Download files, run bundle install, then run ruby app.rb. You will need to create a new profile to start.
+If you would like to test drive the app you can visit the deployed version at [Birdr](http://birdr-blog.herokuapp.com/).
+you can create a new account or sign in with the username 'singingmama' and the password 'burger'.
+
 # License
 MIT &copy; ddanskin
