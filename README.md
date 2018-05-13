@@ -1,9 +1,4 @@
-# rumbler
-
-# Project Title
-[Birdr](http://birdr-blog.herokuapp.com/)
-
-# Motivation
+# [Birdr](http://birdr-blog.herokuapp.com/)
 Birdr is a fullstack microblogging application similar to Tumblr. Users are able to create posts to share photos that are hosted on other websites, write blog posts, and tag their posts to enable searching posts by topic.
 
 # Built with
