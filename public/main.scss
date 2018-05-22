@@ -4,7 +4,6 @@ body {
     flex-direction: column;
     .header{
         h1{
-
         }
         nav{
             ul{
@@ -13,16 +12,20 @@ body {
         }
     }
     .container {
-       .post{
-           img {
-           }
-       }
     }
     .footer{
     }
 }
+
 main {
     flex: 1 0 auto;
+}
+
+.card {
+     min-height: 500px;
+    p {
+        overflow: scroll;
+    }
 }
 
 @media only screen and (min-width: 993px){

@@ -10,7 +10,7 @@
     <div class="row">
         <% all_user_posts(current_user.id).each do |post| %>
             <a href="/user/post/<%= post[:id] %>">
-                <div class="col sm12 l4 post">
+                <div class="col sm12 l4 card">
                     <% if post[:image] %>
                         <img class="responsive-img" src="<%= h post[:image] %>">
                     <% end %>
