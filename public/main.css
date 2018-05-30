@@ -4,12 +4,15 @@ body {
   flex-direction: column; }
   body .header nav ul {
     list-style-type: none; }
+  body .container .profile_info {
+    padding: 10px; }
 
 main {
   flex: 1 0 auto; }
 
 .card {
-  min-height: 500px; }
+  min-height: 500px;
+  min-width: 30vw; }
   .card p {
     overflow: scroll; }
 
