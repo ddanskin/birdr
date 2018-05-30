@@ -12,6 +12,9 @@ body {
         }
     }
     .container {
+        .profile_info {
+            padding: 10px;
+        }
     }
     .footer{
     }
@@ -22,7 +25,8 @@ main {
 }
 
 .card {
-     min-height: 500px;
+    min-height: 500px;
+    min-width: 30vw;
     p {
         overflow: scroll;
     }
