@@ -1,6 +1,8 @@
 # [Birdr](http://birdr-blog.herokuapp.com/)
 Birdr is a fullstack microblogging application similar to Tumblr. Users are able to create posts to share photos that are hosted on other websites, write blog posts, and tag their posts to enable searching posts by topic.
 
+![birdr_preview](https://user-images.githubusercontent.com/6474602/40698127-8c8cd4b0-639b-11e8-9980-5e7b48028cf1.jpg)
+
 # Features
 * User can create/delete account and login using a username and password(password is hashed using BCrypt.
 * User can create/edit a profile.
